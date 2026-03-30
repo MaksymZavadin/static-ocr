@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local OCR Browser App</title>
+    <script type="module" crossorigin src="./assets/index-CDJTrV-N.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C0BBb0Mt.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="kicker">Browser-only OCR</p>
+        <h1>PDF/Image to text locally</h1>
+        <p class="subtitle">OCR runs inside your browser with selected languages.</p>
+      </header>
+
+      <section class="card controls">
+        <label for="fileInput" class="field-label">Input file</label>
+        <input id="fileInput" type="file" accept="application/pdf,image/png,image/jpeg,image/webp,image/tiff" />
+        <div id="fileInfo" class="muted"></div>
+
+        <div class="grid-2">
+          <div>
+            <label for="languageSelect" class="field-label">OCR languages</label>
+            <select id="languageSelect" multiple size="6"></select>
+            <p class="hint">Default: English + German. Hold Cmd/Ctrl to select multiple options.</p>
+          </div>
+          <div>
+            <label for="customLang" class="field-label">Add language code</label>
+            <div class="inline">
+              <input id="customLang" type="text" placeholder="e.g. fra" maxlength="10" />
+              <button id="addLangButton" type="button" class="ghost">Add</button>
+            </div>
+            <p class="hint">Future extension: add any Tesseract language code without changing pipeline logic.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label class="field-label">Image preprocessing</label>
+            <label class="check-row" for="grayscaleToggle">
+              <input id="grayscaleToggle" type="checkbox" />
+              <span>Apply grayscale before OCR</span>
+            </label>
+            <label class="check-row" for="contrastRange">
+              <span>Contrast</span>
+              <input id="contrastRange" type="range" min="-60" max="60" value="0" />
+              <strong id="contrastValue">0</strong>
+            </label>
+            <p class="hint">Use preprocessing for low-quality scans. Higher contrast may improve OCR but can lose detail.</p>
+          </div>
+          <div>
+            <label class="field-label">Current job</label>
+            <div id="jobSummary" class="job-summary">No pages prepared yet.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="runButton" type="button">Run OCR</button>
+          <button id="cancelButton" type="button" class="ghost" disabled>Cancel</button>
+          <button id="resetButton" type="button" class="ghost">Reset</button>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <div id="statusText" class="muted">Idle</div>
+        </div>
+      </section>
+
+      <section class="card output">
+        <div class="output-head">
+          <h2>Recognized text</h2>
+          <div>
+            <button id="copyButton" type="button" class="ghost" disabled>Copy</button>
+            <button id="downloadButton" type="button" class="ghost" disabled>Download .txt</button>
+          </div>
+        </div>
+        <div class="results-layout">
+          <div>
+            <label for="resultText" class="field-label">Merged output</label>
+            <textarea id="resultText" placeholder="OCR output will appear here..." spellcheck="false"></textarea>
+          </div>
+          <div>
+            <label class="field-label">Page details</label>
+            <div id="pageResults" class="page-results">
+              <div class="muted">Page-by-page OCR output will appear here.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </body>
+</html>
