@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Local OCR Browser App</title>
-    <script type="module" crossorigin src="./assets/index-CDJTrV-N.js"></script>
+    <script type="module" crossorigin src="./assets/index-BKusFJk8.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-C0BBb0Mt.css">
   </head>
   <body>
     <main class="app-shell">
       <header class="hero">
         <p class="kicker">Browser-only OCR</p>
-        <h1>PDF/Image to text locally</h1>
-        <p class="subtitle">OCR runs inside your browser with selected languages.</p>
+        <h1>OCR PDF/Image to text locally</h1>
+        <p class="subtitle">Process runs inside your browser with selected languages.</p>
       </header>
 
       <section class="card controls">
@@ -23,7 +23,13 @@
         <div class="grid-2">
           <div>
             <label for="languageSelect" class="field-label">OCR languages</label>
-            <select id="languageSelect" multiple size="6"></select>
+            <select id="languageSelect" multiple size="6">
+              <option value="eng" selected>eng - English</option>
+              <option value="deu" selected>deu - German</option>
+              <option value="ukr">ukr - Ukrainian</option>
+              <option value="fra">fra - French</option>
+              <option value="spa">spa - Spanish</option>
+            </select>
             <p class="hint">Default: English + German. Hold Cmd/Ctrl to select multiple options.</p>
           </div>
           <div>
@@ -49,6 +55,20 @@
               <strong id="contrastValue">0</strong>
             </label>
             <p class="hint">Use preprocessing for low-quality scans. Higher contrast may improve OCR but can lose detail.</p>
+          </div>
+          <div>
+            <label class="field-label">OCR tuning</label>
+            <label class="check-row" for="germanListModeToggle">
+              <input id="germanListModeToggle" type="checkbox" checked />
+              <span>List symbol normalization</span>
+            </label>
+            <label for="psmSelect" class="field-label">Page segmentation mode</label>
+            <select id="psmSelect">
+              <option value="6" selected>1. Document Block - Best for normal pages, lists, and bullet points (recommended)</option>
+              <option value="3">2. Mixed Layout - Best for pages with headers, tables, columns, or different sections</option>
+              <option value="11">3. Scattered Text - Best for forms, labels, or isolated text areas</option>
+            </select>
+            <p class="hint">If bullet symbols look wrong, keep mode 1 and normalization enabled.</p>
           </div>
           <div>
             <label class="field-label">Current job</label>

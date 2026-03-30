@@ -44,6 +44,13 @@ You can also add custom Tesseract language codes from the UI (for example `pol`)
 5. Click Run OCR.
 6. Review output, then copy text or download `.txt`.
 
+## German OCR tips (bullet-point documents)
+
+- For German-only documents, select only `deu`.
+- Keep `List symbol normalization` enabled.
+- Use Page Segmentation Mode `6` for list-heavy content.
+- If bullets are still noisy, enable grayscale and set contrast between `+10` and `+30`.
+
 ## Deployment (static hosting)
 
 Upload this folder content as static files to:
